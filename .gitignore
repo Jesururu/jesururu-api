@@ -120,12 +120,18 @@ coverage
 ############################
 # Strapi
 ############################
-
+*.local
 .env
 license.txt
 exports
 .strapi
-dist
-build
+dist/
+dist-ssr/
+build/
 .strapi-updater.json
 .strapi-cloud.json
+node_modules/
+public/uploads/
+.tmp/
+data.db
+.DS_Store
