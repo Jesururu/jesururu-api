@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "movies",
+  "info": {
+    "singularName": "movie",
+    "pluralName": "movies",
+    "displayName": "Movie"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Poster": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "VideoLink": {
+      "type": "string"
+    },
+    "Synopsis": {
+      "type": "blocks"
+    },
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Short Film",
+        "Feature Film",
+        "Script",
+        "Music Video"
+      ]
+    }
+  }
+}
