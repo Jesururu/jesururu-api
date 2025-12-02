@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_pricing_currency_prices",
+  "info": {
+    "displayName": "CurrencyPrice"
+  },
+  "options": {},
+  "attributes": {
+    "Currency": {
+      "type": "enumeration",
+      "enum": [
+        "USD",
+        "NGN",
+        "GBP",
+        "EUR",
+        "CAD"
+      ]
+    },
+    "Amount": {
+      "type": "decimal"
+    }
+  },
+  "config": {}
+}

@@ -42,6 +42,11 @@
         "videos",
         "audios"
       ]
+    },
+    "LocalPrices": {
+      "type": "component",
+      "component": "pricing.currency-price",
+      "repeatable": true
     }
   }
 }
