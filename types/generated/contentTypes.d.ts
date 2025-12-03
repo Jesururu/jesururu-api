@@ -478,16 +478,20 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    AudiobookLink: Schema.Attribute.String;
     BuyLink: Schema.Attribute.String;
     CoverArt: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    EbookLink: Schema.Attribute.String;
     LaunchDate: Schema.Attribute.Date;
+    LaunchTime: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::book.book'> &
       Schema.Attribute.Private;
     LocalPrices: Schema.Attribute.Component<'pricing.currency-price', true>;
+    PhysicalVenue: Schema.Attribute.Text;
     Price: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     SampleChapter: Schema.Attribute.Media<
@@ -498,6 +502,7 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    VirtualPlatform: Schema.Attribute.String;
   };
 }
 

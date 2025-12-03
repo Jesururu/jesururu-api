@@ -50,6 +50,21 @@
     },
     "LaunchDate": {
       "type": "date"
+    },
+    "LaunchTime": {
+      "type": "string"
+    },
+    "PhysicalVenue": {
+      "type": "text"
+    },
+    "VirtualPlatform": {
+      "type": "string"
+    },
+    "EbookLink": {
+      "type": "string"
+    },
+    "AudiobookLink": {
+      "type": "string"
     }
   }
 }
