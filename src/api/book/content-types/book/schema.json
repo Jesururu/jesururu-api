@@ -47,6 +47,9 @@
       "type": "component",
       "component": "pricing.currency-price",
       "repeatable": true
+    },
+    "LaunchDate": {
+      "type": "date"
     }
   }
 }
