@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_links_purchase_options",
+  "info": {
+    "displayName": "PurchaseOption"
+  },
+  "options": {},
+  "attributes": {
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Physical",
+        "Ebook",
+        "Audiobook"
+      ]
+    },
+    "Platform": {
+      "type": "string"
+    },
+    "Link": {
+      "type": "string"
+    },
+    "PriceLabel": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

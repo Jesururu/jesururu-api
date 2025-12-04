@@ -27,12 +27,6 @@
     "Synopsis": {
       "type": "blocks"
     },
-    "BuyLink": {
-      "type": "string"
-    },
-    "Price": {
-      "type": "string"
-    },
     "SampleChapter": {
       "type": "media",
       "multiple": false,
@@ -60,10 +54,17 @@
     "VirtualPlatform": {
       "type": "string"
     },
-    "EbookLink": {
-      "type": "string"
+    "PurchaseLinks": {
+      "type": "component",
+      "component": "links.purchase-option",
+      "repeatable": true
     },
-    "AudiobookLink": {
+    "TheTeam": {
+      "type": "component",
+      "component": "event.team-member",
+      "repeatable": true
+    },
+    "WhatsAppLink": {
       "type": "string"
     }
   }

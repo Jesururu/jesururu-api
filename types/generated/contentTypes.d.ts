@@ -478,13 +478,10 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    AudiobookLink: Schema.Attribute.String;
-    BuyLink: Schema.Attribute.String;
     CoverArt: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    EbookLink: Schema.Attribute.String;
     LaunchDate: Schema.Attribute.Date;
     LaunchTime: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -492,17 +489,19 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     LocalPrices: Schema.Attribute.Component<'pricing.currency-price', true>;
     PhysicalVenue: Schema.Attribute.Text;
-    Price: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    PurchaseLinks: Schema.Attribute.Component<'links.purchase-option', true>;
     SampleChapter: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
     Synopsis: Schema.Attribute.Blocks;
+    TheTeam: Schema.Attribute.Component<'event.team-member', true>;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     VirtualPlatform: Schema.Attribute.String;
+    WhatsAppLink: Schema.Attribute.String;
   };
 }
 
@@ -539,6 +538,51 @@ export interface ApiBookingBooking extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEventEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'events';
+  info: {
+    displayName: 'Event';
+    pluralName: 'events';
+    singularName: 'event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Category: Schema.Attribute.Enumeration<
+      [
+        'Book Launch',
+        'Podcast',
+        'Speaking',
+        'Conference',
+        'Worship Night',
+        'Movie Premiere',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    EventDateTime: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
+      Schema.Attribute.Private;
+    Poster: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    RegistrationLInk: Schema.Attribute.String;
+    registrations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::registration.registration'
+    >;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Venue: Schema.Attribute.String;
+    WhatsAppLink: Schema.Attribute.String;
+  };
+}
+
 export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
   collectionName: 'movies';
   info: {
@@ -550,6 +594,7 @@ export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    CinemaLocation: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -557,6 +602,7 @@ export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::movie.movie'> &
       Schema.Attribute.Private;
     Poster: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    PremiereDate: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
     Synopsis: Schema.Attribute.Blocks;
     Title: Schema.Attribute.String;
@@ -567,6 +613,41 @@ export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     VideoLink: Schema.Attribute.String;
+  };
+}
+
+export interface ApiRegistrationRegistration
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'registrations';
+  info: {
+    displayName: 'Registration';
+    pluralName: 'registrations';
+    singularName: 'registration';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    attendanceType: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    emailAddress: Schema.Attribute.Email & Schema.Attribute.Required;
+    event: Schema.Attribute.Relation<'manyToOne', 'api::event.event'>;
+    eventTitle: Schema.Attribute.String;
+    fullName: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::registration.registration'
+    > &
+      Schema.Attribute.Private;
+    phoneNumber: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    ticketCode: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -590,6 +671,7 @@ export interface ApiSongSong extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::song.song'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    ReleaseDate: Schema.Attribute.Date;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1110,7 +1192,9 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::book.book': ApiBookBook;
       'api::booking.booking': ApiBookingBooking;
+      'api::event.event': ApiEventEvent;
       'api::movie.movie': ApiMovieMovie;
+      'api::registration.registration': ApiRegistrationRegistration;
       'api::song.song': ApiSongSong;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

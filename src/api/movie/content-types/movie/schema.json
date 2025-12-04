@@ -38,6 +38,12 @@
         "Script",
         "Music Video"
       ]
+    },
+    "PremiereDate": {
+      "type": "date"
+    },
+    "CinemaLocation": {
+      "type": "string"
     }
   }
 }
