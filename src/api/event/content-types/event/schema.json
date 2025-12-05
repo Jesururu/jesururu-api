@@ -55,6 +55,11 @@
       "relation": "oneToMany",
       "target": "api::registration.registration",
       "mappedBy": "event"
+    },
+    "Team": {
+      "type": "component",
+      "component": "event.team-member",
+      "repeatable": true
     }
   }
 }

@@ -6,6 +6,7 @@ export interface EventTeamMember extends Struct.ComponentSchema {
     displayName: 'TeamMember';
   };
   attributes: {
+    Bio: Schema.Attribute.Text;
     Name: Schema.Attribute.String;
     Photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Role: Schema.Attribute.String;
