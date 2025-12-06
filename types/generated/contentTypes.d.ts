@@ -637,6 +637,7 @@ export interface ApiRegistrationRegistration
     event: Schema.Attribute.Relation<'manyToOne', 'api::event.event'>;
     eventTitle: Schema.Attribute.String;
     fullName: Schema.Attribute.String & Schema.Attribute.Required;
+    isCheckedIn: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
