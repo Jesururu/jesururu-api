@@ -617,6 +617,33 @@ export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
+  collectionName: 'quotes';
+  info: {
+    displayName: 'Quote';
+    pluralName: 'quotes';
+    singularName: 'quote';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Highlight: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'> &
+      Schema.Attribute.Private;
+    PostedBy: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Text: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRegistrationRegistration
   extends Struct.CollectionTypeSchema {
   collectionName: 'registrations';
@@ -1196,6 +1223,7 @@ declare module '@strapi/strapi' {
       'api::booking.booking': ApiBookingBooking;
       'api::event.event': ApiEventEvent;
       'api::movie.movie': ApiMovieMovie;
+      'api::quote.quote': ApiQuoteQuote;
       'api::registration.registration': ApiRegistrationRegistration;
       'api::song.song': ApiSongSong;
       'plugin::content-releases.release': PluginContentReleasesRelease;
