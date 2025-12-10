@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "authorized_devices",
+  "info": {
+    "singularName": "authorized-device",
+    "pluralName": "authorized-devices",
+    "displayName": "AuthorizedDevice"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "DeviceName": {
+      "type": "string"
+    },
+    "DeviceUUID": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}
