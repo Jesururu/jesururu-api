@@ -39,6 +39,9 @@
         "videos",
         "audios"
       ]
+    },
+    "YouTubeLink": {
+      "type": "string"
     }
   }
 }

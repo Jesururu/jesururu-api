@@ -764,6 +764,7 @@ export interface ApiVideoVideo extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     VideoFile: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    YouTubeLink: Schema.Attribute.String;
   };
 }
 
