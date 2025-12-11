@@ -40,6 +40,14 @@
     "isCheckedIn": {
       "type": "boolean",
       "default": false
+    },
+    "AttendeePhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }

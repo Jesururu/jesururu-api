@@ -25,6 +25,35 @@
     },
     "Body": {
       "type": "text"
+    },
+    "BiblePlan": {
+      "type": "string"
+    },
+    "BibleDay": {
+      "type": "integer"
+    },
+    "Assignment": {
+      "type": "text"
+    },
+    "QuizQuestion": {
+      "type": "string"
+    },
+    "QuizOptionA": {
+      "type": "string"
+    },
+    "QuizOptionB": {
+      "type": "string"
+    },
+    "QuizOptionC": {
+      "type": "string"
+    },
+    "CorrectOption": {
+      "type": "enumeration",
+      "enum": [
+        "A",
+        "B",
+        "C"
+      ]
     }
   }
 }

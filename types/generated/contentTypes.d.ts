@@ -579,8 +579,12 @@ export interface ApiDevotionalDevotional extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Assignment: Schema.Attribute.Text;
+    BibleDay: Schema.Attribute.Integer;
+    BiblePlan: Schema.Attribute.String;
     Body: Schema.Attribute.Text;
     Category: Schema.Attribute.String;
+    CorrectOption: Schema.Attribute.Enumeration<['A', 'B', 'C']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -592,6 +596,10 @@ export interface ApiDevotionalDevotional extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    QuizOptionA: Schema.Attribute.String;
+    QuizOptionB: Schema.Attribute.String;
+    QuizOptionC: Schema.Attribute.String;
+    QuizQuestion: Schema.Attribute.String;
     Scripture: Schema.Attribute.String;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -706,6 +714,36 @@ export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiReflectionReflection extends Struct.CollectionTypeSchema {
+  collectionName: 'reflections';
+  info: {
+    displayName: 'Reflection';
+    pluralName: 'reflections';
+    singularName: 'reflection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Content: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    DevotionalTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::reflection.reflection'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    ReaderName: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRegistrationRegistration
   extends Struct.CollectionTypeSchema {
   collectionName: 'registrations';
@@ -719,6 +757,7 @@ export interface ApiRegistrationRegistration
   };
   attributes: {
     attendanceType: Schema.Attribute.String;
+    AttendeePhoto: Schema.Attribute.Media<'images' | 'files'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1347,6 +1386,7 @@ declare module '@strapi/strapi' {
       'api::event.event': ApiEventEvent;
       'api::movie.movie': ApiMovieMovie;
       'api::quote.quote': ApiQuoteQuote;
+      'api::reflection.reflection': ApiReflectionReflection;
       'api::registration.registration': ApiRegistrationRegistration;
       'api::song.song': ApiSongSong;
       'api::subscriber.subscriber': ApiSubscriberSubscriber;
