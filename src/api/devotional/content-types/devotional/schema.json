@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "devotionals",
+  "info": {
+    "singularName": "devotional",
+    "pluralName": "devotionals",
+    "displayName": "Devotional"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Date": {
+      "type": "date"
+    },
+    "Category": {
+      "type": "string"
+    },
+    "Scripture": {
+      "type": "string"
+    },
+    "Body": {
+      "type": "text"
+    }
+  }
+}
