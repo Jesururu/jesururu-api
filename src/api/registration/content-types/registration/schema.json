@@ -41,7 +41,7 @@
       "type": "boolean",
       "default": false
     },
-    "AttendeePhoto": {
+    "attendeePhoto": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [

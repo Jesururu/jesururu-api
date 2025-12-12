@@ -757,7 +757,7 @@ export interface ApiRegistrationRegistration
   };
   attributes: {
     attendanceType: Schema.Attribute.String;
-    AttendeePhoto: Schema.Attribute.Media<'images' | 'files'>;
+    attendeePhoto: Schema.Attribute.Media<'images' | 'files'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
