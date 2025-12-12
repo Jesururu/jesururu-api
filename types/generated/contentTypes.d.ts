@@ -497,6 +497,39 @@ export interface ApiAuthorizedDeviceAuthorizedDevice
   };
 }
 
+export interface ApiBookSaleBookSale extends Struct.CollectionTypeSchema {
+  collectionName: 'book_sales';
+  info: {
+    displayName: 'BookSale';
+    pluralName: 'book-sales';
+    singularName: 'book-sale';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    amountPaid: Schema.Attribute.Decimal;
+    bookTitle: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customerEmail: Schema.Attribute.Email;
+    customerName: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::book-sale.book-sale'
+    > &
+      Schema.Attribute.Private;
+    paymentStatus: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    reference: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBookBook extends Struct.CollectionTypeSchema {
   collectionName: 'books';
   info: {
@@ -1380,6 +1413,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::authorized-device.authorized-device': ApiAuthorizedDeviceAuthorizedDevice;
+      'api::book-sale.book-sale': ApiBookSaleBookSale;
       'api::book.book': ApiBookBook;
       'api::booking.booking': ApiBookingBooking;
       'api::devotional.devotional': ApiDevotionalDevotional;

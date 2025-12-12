@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "book_sales",
+  "info": {
+    "singularName": "book-sale",
+    "pluralName": "book-sales",
+    "displayName": "BookSale"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customerName": {
+      "type": "string"
+    },
+    "customerEmail": {
+      "type": "email"
+    },
+    "amountPaid": {
+      "type": "decimal"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "bookTitle": {
+      "type": "string"
+    },
+    "paymentStatus": {
+      "type": "string"
+    }
+  }
+}
