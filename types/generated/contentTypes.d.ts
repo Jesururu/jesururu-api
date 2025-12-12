@@ -509,18 +509,23 @@ export interface ApiBookSaleBookSale extends Struct.CollectionTypeSchema {
   };
   attributes: {
     amountPaid: Schema.Attribute.Decimal;
+    bank: Schema.Attribute.String;
     bookTitle: Schema.Attribute.String;
+    cardType: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     customerEmail: Schema.Attribute.Email;
     customerName: Schema.Attribute.String;
+    last4: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::book-sale.book-sale'
     > &
       Schema.Attribute.Private;
+    payerAccountName: Schema.Attribute.String;
+    payerEmail: Schema.Attribute.String;
     paymentStatus: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     reference: Schema.Attribute.String;

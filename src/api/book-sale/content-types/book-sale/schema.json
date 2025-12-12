@@ -28,6 +28,21 @@
     },
     "paymentStatus": {
       "type": "string"
+    },
+    "bank": {
+      "type": "string"
+    },
+    "cardType": {
+      "type": "string"
+    },
+    "last4": {
+      "type": "string"
+    },
+    "payerEmail": {
+      "type": "string"
+    },
+    "payerAccountName": {
+      "type": "string"
     }
   }
 }
